@@ -40,6 +40,28 @@ function myNewFunction(){
 
 };
 
+function anotherFunction(){
+  // variables declared anywhere in the function, are available anywhere
+  // in the function.  This is called hoisting
+
+  // remember declaration and assignment are two different concepts
+
+  console.log(myLocalVariable);
+  console.log(myBlockedVariable);
+  console.log(someOtherVariable);
+
+  var myLocalVariable = 5;
+
+  if (myLocalVariable) {
+    var myBlockedVariable = "Hello";
+  }
+  else {
+    var someOtherVariable = "Howdy"
+  }
+
+
+}
+
 myNewFunction();
 console.log(myVariable);
 console.log(window.myVariable)
@@ -81,16 +103,38 @@ myObject.myMethod = function(){
 
 };
 
-myObject.myMethod();
 
-var Car = function(make, model){
-  this.wheels = 4;
-  this.make = make;
-  this.model = model;
-};
+// `this` ===========================================================
+// The JavaScript keyword `this` is contextually determined based on how
+// the function was invoked.
 
 
-var myHonda = new Car("Honda", "Accord");
+// Constructor invocation
 
-window.hasOwnProperty('make');
+
+
+
+// Method invocation
+Car.prototype.whatThe = function(){
+  console.log(this);
+  var that = this;
+  var self = this;
+  function stuff() {
+    console.log(this);
+    console.log(that);
+    console.log(self);
+  }
+  stuff();
+}
+
+
+
+// Function invocation
+
+
+
+
+// Function#call and Function#apply
+
+
 
